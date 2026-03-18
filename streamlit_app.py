@@ -22,7 +22,7 @@ if ingredients_list:
         ingredients_string += fruit_chosen + ' '
         search_on = my_dataframe.loc[my_dataframe['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + search_on)
-        st.subheader(fruit_chosen + ' Nutrition Info')
+        st.subheader(fruit_chosen + ' Nutrition Information')
         st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
     my_insert_stmt = "INSERT INTO smoothies.public.orders (ingredients, name_on_order) VALUES ('" + ingredients_string + "', '" + name_on_order + "')"
