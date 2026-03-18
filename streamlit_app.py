@@ -23,5 +23,6 @@ if ingredients_list:
     my_insert_stmt = "INSERT INTO smoothies.public.orders (ingredients, name_on_order) VALUES ('" + ingredients_string + "', '" + name_on_order + "')"
 
     if st.button('Submit Order'):
-        cnx.query(my_insert_stmt)
+        session = cnx.session()
+        session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, ' + name_on_order + '!', icon="✅")
